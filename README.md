@@ -6,5 +6,5 @@ Desafio de Projeto criado para avaliação do conteúdo técnico explorado no re
 
 
 ```kotlin
-TODO("Crie uma solução em Koltin abstraindo o domínio em questão. Para isso, utilize o arquivo [desafio.kt]")
+TODO("Crie uma solução em Koltin abstraindo o domínio apresentado. Utilize o arquivo [desafio.kt] para isso.")
 ```
