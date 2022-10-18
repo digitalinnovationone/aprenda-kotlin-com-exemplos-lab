@@ -1,6 +1,6 @@
 enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
-data class Usuario(val nome: String)
+data class Usuario
 
 data class ConteudoEducacional(val nome: String, val duracao: Int)
 
