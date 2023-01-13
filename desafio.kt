@@ -1,21 +1,56 @@
-// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
+enum class Nivel { BASICO, INTERMEDIARIO, AVANÇADO }
 
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
+data class Aluno(val nome: String, val email: String)
 
-class Usuario
+data class ConteudoEducacional(val nome: String, val duracao: Int = 60)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+data class Formacao(val nome: String, val conteudos: List<ConteudoEducacional>, val nivel: Nivel) {
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
-
-    val inscritos = mutableListOf<Usuario>()
+    val inscritos = mutableListOf<Aluno>()
     
-    fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+    fun matricular(aluno: Aluno) {
+         inscritos.add(aluno)
+    }
+    
+    fun imprimirListaInscritos(){
+        for(user in inscritos){
+            println(user.nome)
+        }
+    }
+    
+    fun imprimirGradeFormacao(){
+        for(cont in conteudos){
+            println("${cont.nome} - ${cont.duracao}")
+        }
     }
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    //cursos individuais
+    val moduloPython = ConteudoEducacional("curso python", 160)
+    val moduloKotlin = ConteudoEducacional("curso kotlin", 60)
+    
+    val listConteudos = mutableListOf<ConteudoEducacional>()
+    listConteudos.add(moduloPython)
+    listConteudos.add(moduloKotlin)
+    
+    //formação completa com todos os cursos
+    val formacaoFullstack = Formacao("Formação Fullstack Developer", listConteudos, Nivel.INTERMEDIARIO)
+    
+    //Criar lista de usuarios
+    val André = Aluno("André", "dede@gmail.com")
+    val Bruna = Aluno("Bruna", "bruna@gmail.com")
+    
+    //matriculando usuarios na formação
+    formacaoFullstack.matricular(André)
+    formacaoFullstack.matricular(Bruna)
+    
+    println("======================================")
+    println("Dados da formação")
+    println("${formacaoFullstack.nome} - ${formacaoFullstack.nivel}")
+    println("Grade formação")
+    println(formacaoFullstack.imprimirGradeFormacao())
+    println("=======================================")
+    println("Lista de inscritos")
+    println(formacaoFullstack.imprimirListaInscritos())
 }
