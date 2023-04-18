@@ -8,3 +8,17 @@ Desafio de Projeto criado para avaliação do conteúdo técnico explorado no re
 ```kotlin
 TODO("Crie uma solução em Koltin abstraindo esse domínio. O arquivo [desafio.kt] te ajudará 😉")
 ```
+
+# Saída após a execução
+Usuário João matriculado na formação Formação de Desenvolvimento Web
+Usuário Maria matriculado na formação Formação de Desenvolvimento Web
+Usuário João matriculado na formação Formação de Ciência de Dados
+Formação: Formação de Desenvolvimento Web | Nível: INTERMEDIARIO | Conteúdos: [ConteudoEducacional(nome=Introdução a Programação, duracao=60), ConteudoEducacional(nome=Estruturas de Dados, duracao=80)] | Inscritos: [João, Maria]
+Formação: Formação de Ciência de Dados | Nível: AVANCADO | Conteúdos: [ConteudoEducacional(nome=Introdução a Programação, duracao=60), ConteudoEducacional(nome=Algoritmos Avançados, duracao=100)] | Inscritos: [João]
+Usuário Maria desmatriculado da formação Formação de Desenvolvimento Web
+Conteúdo Estruturas de Dados adicionado à formação Formação de Ciência de Dados
+Conteúdo Introdução a Programação removido da formação Formação de Ciência de Dados
+Formação: Formação de Desenvolvimento Web | Nível: INTERMEDIARIO | Conteúdos: [ConteudoEducacional(nome=Introdução a Programação, duracao=60), ConteudoEducacional(nome=Estruturas de Dados, duracao=80)] | Inscritos: [João]
+Formação: Formação de Ciência de Dados | Nível: AVANCADO | Conteúdos: [ConteudoEducacional(nome=Algoritmos Avançados, duracao=100), ConteudoEducacional(nome=Estruturas de Dados, duracao=80)] | Inscritos: [João]
+
+
