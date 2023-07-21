@@ -1,5 +1,5 @@
 package domain
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 6){
+data class ConteudoEducacional(var nome: String, val duracao: Int = 60){
 
 }
