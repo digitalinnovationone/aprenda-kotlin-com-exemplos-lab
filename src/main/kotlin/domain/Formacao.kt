@@ -1,10 +1,16 @@
 package domain
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+import domain.enums.Nivel
+
+data class Formacao(val nome: String,var conteudos: MutableList<ConteudoEducacional>, val nivel: Nivel) {
 
     val inscritos = mutableListOf<Usuario>()
 
+
     fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+        inscritos.add(usuario)
+    }
+    fun adicionarConteudo(conteudoEducacional: ConteudoEducacional){
+        conteudos.add(conteudoEducacional)
     }
 }
