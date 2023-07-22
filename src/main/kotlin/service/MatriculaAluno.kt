@@ -4,5 +4,5 @@ import domain.Usuario
 
 interface MatriculaAluno {
     fun matricular(usuario: Usuario)
-    fun desistir(usuario: Usuario)
+    fun desistir(usuario: Usuario):Usuario?
 }

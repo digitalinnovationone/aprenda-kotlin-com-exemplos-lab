@@ -3,7 +3,7 @@ package domain
 import domain.enums.Cursos
 import domain.enums.Nivel
 
-data class Formacao(val tipo: Cursos, var conteudos: MutableList<ConteudoEducacional>, val nivel: Nivel) {
+data class Formacao(val linguagem: Cursos, var conteudos: MutableList<ConteudoEducacional>, val nivel: Nivel) {
 
     val inscritos = mutableListOf<Usuario>()
 

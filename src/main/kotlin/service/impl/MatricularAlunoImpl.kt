@@ -14,7 +14,8 @@ class MatricularAlunoImpl(private val formacao: Formacao) : MatriculaAluno {
         formacao.inscritos.add(usuario)
     }
 
-    override fun desistir(usuario: Usuario) {
-        formacao.inscritos.remove(usuario)
+    override fun desistir(usuario: Usuario): Usuario? {
+        val removedUser = formacao.inscritos.remove(usuario)
+        return if (removedUser) usuario else null
     }
 }
