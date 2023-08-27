@@ -12,6 +12,7 @@ class DIO {
     }
 
     fun adicionarUsuario(usuario: Usuario) {
+        usuario.id = usuarios.size + 1
         this.usuarios.add(usuario)
     }
 
@@ -87,7 +88,16 @@ data class Formacao(
     }
     fun matricular(usuario: Usuario) {
 //         TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-        inscritos.add(usuario)
+            println("Matriculando usuario")
+        DIO().adicionarUsuario(usuario);
+        var ultimoRegistrado = DIO().getUsuarios().lastOrNull()
+        if(ultimoRegistrado != null) {
+            inscritos.add(ultimoRegistrado)
+        } else {
+            println("Falha ao matricular usuario")
+        }
+
+
     }
 }
 
@@ -95,7 +105,6 @@ fun main() {
 //     TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
 //     TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
     val dio = DIO()
-    val dioUsuarios = DIO().getUsuarios()
     val formacao1 = Formacao(
         nome = "Guia Scrum",
         conteudos = mutableListOf(
@@ -106,8 +115,8 @@ fun main() {
         nivel = Nivel.BASICO
     )
 
-    val samuel = Usuario(dio.getUsuarios().size + 1, "Samuel")
-    dio.adicionarUsuario(samuel)
+    val aluno1 = Usuario(0, "Samuel")
+    dio.adicionarUsuario(aluno1)
 
     println(" Cadastrado usuer1 cadastrada com sucesso!")
     val aluno2 = Usuario(formacao1.getAlunosMatriculados().size + 1, "User2")
