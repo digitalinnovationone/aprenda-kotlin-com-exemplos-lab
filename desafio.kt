@@ -31,8 +31,8 @@ class Usuario {
     var id: Int
     var nome: String
 
-    constructor(id: Int, nome: String) {
-        this.id = id
+    constructor( nome: String) {
+        this.id = 0
         this.nome = nome
 
         fun getId(): Int {
@@ -96,15 +96,12 @@ data class Formacao(
         } else {
             println("Falha ao matricular usuario")
         }
-
-
     }
 }
 
 fun main() {
 //     TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
 //     TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
-    val dio = DIO()
     val formacao1 = Formacao(
         nome = "Guia Scrum",
         conteudos = mutableListOf(
@@ -115,15 +112,15 @@ fun main() {
         nivel = Nivel.BASICO
     )
 
-    val aluno1 = Usuario(0, "Samuel")
-    dio.adicionarUsuario(aluno1)
+    val aluno1 = Usuario( "Samuel Registro1")
+    formacao1.matricular(aluno1)
 
     println(" Cadastrado usuer1 cadastrada com sucesso!")
-    val aluno2 = Usuario(formacao1.getAlunosMatriculados().size + 1, "User2")
+    val aluno2 = Usuario("Samuel Registro2")
     formacao1.matricular(aluno2)
 
-    dio.adicionarFormacao(formacao1)
-    var ultimaFormacao = dio.getFormacoes().lastOrNull()
+    DIO().adicionarFormacao(formacao1)
+    var ultimaFormacao = DIO().getFormacoes().lastOrNull()
     if (ultimaFormacao != null ) {
         println(" Formacao ${ultimaFormacao.getNome()} cadastrada com sucesso!")
     } else {
@@ -143,6 +140,11 @@ fun main() {
         inscritos = mutableListOf(),
         nivel = Nivel.BASICO
     )
+
+    val aluno3 = Usuario( "Samuel Registro 3")
+    val aluno4 = Usuario( "Samuel Registro 4")
+    val aluno5 = Usuario( "Samuel Registro 5")
+
 
 //    dio.getFormacoes().forEach {
 //            formacao -> println(formacao.getNome())
