@@ -9,6 +9,13 @@ class DIO {
 
     fun adicionarFormacao(formacao: Formacao) {
         this.formacoes.add(formacao)
+
+        var ultimaFormacao = formacoes.lastOrNull()
+        if (ultimaFormacao != null ) {
+            println(" Formacao ${ultimaFormacao.getNome()} cadastrada com sucesso!")
+        } else {
+            print("Ocorreu um erro ao adicinar Formacao")
+        }
     }
 
     fun adicionarUsuario(usuario: Usuario) {
@@ -25,7 +32,7 @@ class DIO {
     }
 
 }
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
+enum class Nivel { BASICO, INTERMEDIARIO, AVANCADO }
 
 class Usuario {
     var id: Int
@@ -86,15 +93,18 @@ data class Formacao(
     fun getAlunosMatriculados(): MutableList<Usuario> {
         return this.inscritos
     }
-    fun matricular(usuario: Usuario) {
+    fun matricular(vararg usuarios: Usuario) {
 //         TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-            println("Matriculando usuario")
-        DIO().adicionarUsuario(usuario);
-        var ultimoRegistrado = DIO().getUsuarios().lastOrNull()
-        if(ultimoRegistrado != null) {
-            inscritos.add(ultimoRegistrado)
-        } else {
-            println("Falha ao matricular usuario")
+        println("Matriculando usuario")
+        usuarios.forEach { usuario ->
+            DIO().adicionarUsuario(usuario)
+            var ultimoRegistrado = DIO().getUsuarios().lastOrNull()
+            if(ultimoRegistrado != null) {
+                inscritos.add(ultimoRegistrado)
+                println("Usuário ${usuario.nome} matriculado com sucesso")
+            } else {
+                println("Falha ao matricular usuario")
+            }
         }
     }
 }
@@ -111,21 +121,22 @@ fun main() {
         inscritos = mutableListOf(),
         nivel = Nivel.BASICO
     )
+//    Adicionar uma formação
+    DIO().adicionarFormacao(formacao1)
 
-    val aluno1 = Usuario( "Samuel Registro1")
+//    Matricular um aluno por vez
+    val aluno1 = Usuario( "Samuel Registro 1")
     formacao1.matricular(aluno1)
-
-    println(" Cadastrado usuer1 cadastrada com sucesso!")
-    val aluno2 = Usuario("Samuel Registro2")
+    val aluno2 = Usuario("Samuel Registro 2")
     formacao1.matricular(aluno2)
 
-    DIO().adicionarFormacao(formacao1)
-    var ultimaFormacao = DIO().getFormacoes().lastOrNull()
-    if (ultimaFormacao != null ) {
-        println(" Formacao ${ultimaFormacao.getNome()} cadastrada com sucesso!")
-    } else {
-        print("Ocorreu um erro ao adicinar Formacao")
-    }
+//    Matricular vários alunos
+    val aluno3 = Usuario( "Samuel Registro 3")
+    val aluno4 = Usuario( "Samuel Registro 4")
+    val aluno5 = Usuario( "Samuel Registro 5")
+    formacao1.matricular(aluno1, aluno2, aluno3, aluno4, aluno5)
+
+
 
     val formacao2 = Formacao(
         nome = "Git do Zero",
@@ -138,21 +149,21 @@ fun main() {
             ConteudoEducacional("Como implementar Scrum", 40)
         ),
         inscritos = mutableListOf(),
-        nivel = Nivel.BASICO
+        nivel = Nivel.INTERMEDIARIO
     )
 
-    val aluno3 = Usuario( "Samuel Registro 3")
-    val aluno4 = Usuario( "Samuel Registro 4")
-    val aluno5 = Usuario( "Samuel Registro 5")
+    val formacao3 = Formacao(
+        nome = "MQL5 do Zero",
+        conteudos = mutableListOf(
+            ConteudoEducacional("A importancia do MQL5", 3),
+            ConteudoEducacional("Dominando MQL5", 50),
+        ),
+        inscritos = mutableListOf(),
+        nivel = Nivel.AVANCADO
+    )
+
+    DIO().adicionarFormacao(formacao1)
 
 
-//    dio.getFormacoes().forEach {
-//            formacao -> println(formacao.getNome())
-//        println(formacao.getNivel())
-//        formacao.getConteudos()
-//        formacao.getAlunosMatriculados().forEach{
-//                usuario -> println("--- ${usuario.id} ${usuario.nome} ")
-//        }
-//    }
 
 }
