@@ -8,3 +8,4 @@ Desafio de Projeto criado para avaliação do conteúdo técnico explorado no re
 ```kotlin
 TODO("Crie uma solução em Koltin abstraindo esse domínio. O arquivo [desafio.kt] te ajudará 😉")
 ```
+//foi feito alterações e atribuições como exemplo nomes de 3 alunos, e variações de conteúdos, inscritos, usuario 1, usuario 2, usuario 3, para ser impresso as matriculas dos alunos junto as disciplinas.
