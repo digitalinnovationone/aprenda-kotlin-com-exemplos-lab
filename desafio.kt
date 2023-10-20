@@ -10,7 +10,6 @@ data class Formacao(val nome: String, val nivel: Nivel, var conteudos: List<Cont
     
     fun matricular(usuario: Usuario) {
         inscritos.add(usuario)
-        //TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
     }
 }
 
