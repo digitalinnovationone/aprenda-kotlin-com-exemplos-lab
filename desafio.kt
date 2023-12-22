@@ -19,12 +19,17 @@ data class Formacao(val nome: String,val nivel: Nivel, var conteudos: List<Conte
 
 
     fun matricular(usuario: Usuario): String {
+        inscritos.add(usuario)
         val duracaoTotal = conteudos.sumBy { it.duracao }
         return "O(A) ${usuario.nome} está matriculado na $nome que tem duração de $duracaoTotal horas"
     }
     fun getInfo(): String{
 
         return "A $nome possui os cursos $nivel de ${conteudos[0].nome} e ${conteudos[1].nome}"
+    }
+
+    fun getInscritos(): String {
+        return "Usuários inscritos: ${inscritos.joinToString(", ") { it.nome }}"
     }
 }
 
@@ -55,9 +60,9 @@ fun main() {
     var selecao: Boolean=true;
 
       loopPrincipal@  while(selecao){
+             scan.nextLine()
             println("Digite seu nome")
-            scan.nextLine()
-            val nome: String = scan.nextLine()
+            var nome: String = scan.nextLine()
             val usuario = Usuario(nome)
 
             println("Olá, $nome\nEscolha formação de preferência\n1- Introdutório\n2- Intermediário\n3- Avançado \n4- Sair")
@@ -70,6 +75,7 @@ fun main() {
                     val matricula: Int = scan.nextInt()
                     if(matricula == 1){
                         println(introdutorio.matricular(usuario))
+                        println(introdutorio.getInscritos())
                         println("Deseja matricular outra pessoa? \n" +
                                 "1- Sim \n" +
                                 "2- Não")
@@ -86,16 +92,55 @@ fun main() {
                 
             }
             2 -> {
-                println("Escolha o nível \n1- Básico\n2- Intermediário \n3- Difícil")
+                println(intermediario.getInfo())
+                println("Deseja se matricular? \n1- Sim \n2- Não")
+                val matricula: Int = scan.nextInt()
+                if(matricula == 1) {
+                    println(intermediario.matricular(usuario))
+                    println(intermediario.getInscritos())
+                    println(
+                        "Deseja matricular outra pessoa? \n" +
+                                "1- Sim \n" +
+                                "2- Não"
+                    )
+                    val outraOpcao: Int = scan.nextInt()
+                    if (outraOpcao == 1) {
+                        continue@loopPrincipal
+                    } else if (outraOpcao == 2) {
+                        println("Finalizando programa...")
+                        scan.close()
+                        System.exit(0)
+                    }
+                }
 
             }
             3 ->{
-
+                    println(avancado.getInfo())
+                    println("Deseja se matricular? \n1- Sim \n2- Não")
+                    val matricula: Int = scan.nextInt()
+                    if(matricula == 1) {
+                        println(avancado.matricular(usuario))
+                        println(avancado.getInscritos())
+                        println(
+                            "Deseja matricular outra pessoa? \n" +
+                                    "1- Sim \n" +
+                                    "2- Não"
+                        )
+                        val outraOpcao: Int = scan.nextInt()
+                        if (outraOpcao == 1) {
+                            continue@loopPrincipal
+                        } else if (outraOpcao == 2) {
+                            println("Finalizando programa...")
+                            scan.close()
+                            System.exit(0)
+                        }
+                    }
             }
             4 -> {
                 println("Saindo do programa...")
                 selecao = false
                 scan.close()
+                System.exit(0)
             };
             else ->println("Opção ínvalida")
         }
