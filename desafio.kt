@@ -4,63 +4,98 @@ import kotlin.jvm.internal.Intrinsics.Kotlin
 enum class Nivel {
     BASICO, INTERMEDIARIO, DIFICIL
 }
-class Usuario(var nome: String, var idade: Int)
+class Usuario(var nome: String)
 
-data class ConteudoEducacional(var nome: String,val nivel: Nivel, val duracao: Int ){
+data class ConteudoEducacional(var nome: String, val duracao: Int ){
     fun getInfo(): String{
-        return "O conteudo educacional escolhido é $nome $nivel e tem duração de $duracao dias!"
+        return "O conteudo educacional escolhido é $nome e tem duração de $duracao horas!"
     }
 }
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+data class Formacao(val nome: String,val nivel: Nivel, var conteudos: List<ConteudoEducacional>) {
 
     val inscritos = mutableListOf<Usuario>()
 
-    fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+
+
+    fun matricular(usuario: Usuario): String {
+        val duracaoTotal = conteudos.sumBy { it.duracao }
+        return "O(A) ${usuario.nome} está matriculado na $nome que tem duração de $duracaoTotal horas"
+    }
+    fun getInfo(): String{
+
+        return "A $nome possui os cursos $nivel de ${conteudos[0].nome} e ${conteudos[1].nome}"
     }
 }
 
 fun main() {
     val scan = Scanner(System.`in`)
-    val javaBasico = ConteudoEducacional(nome = "Java",nivel = Nivel.BASICO, duracao = 40)
-    val javaInter = ConteudoEducacional(nome = "Java",nivel = Nivel.INTERMEDIARIO, duracao = 50)
-    val javaDificil = ConteudoEducacional(nome = "Java",nivel = Nivel.DIFICIL, duracao = 60)
-    val kotlinBasico = ConteudoEducacional(nome = "Kotlin",nivel =Nivel.BASICO, duracao = 50)
-    val kotlinInter = ConteudoEducacional(nome = "Kotlin",nivel =Nivel.INTERMEDIARIO, duracao = 60)
-    val kotlinDificil = ConteudoEducacional(nome = "Kotlin",nivel =Nivel.DIFICIL, duracao = 70)
+    val javaIntro = ConteudoEducacional(nome = "Introdução a Java", duracao = 10)
+    val kotlinIntro = ConteudoEducacional(nome = "Introdução a Kotlin", duracao = 10)
+    val javaInter = ConteudoEducacional(nome = "Java Intermediário", duracao = 50)
+    val kotlinInter= ConteudoEducacional(nome = "Kotlin Intermediário", duracao = 50)
+    val javaAvan = ConteudoEducacional(nome = "Java avançado", duracao = 100)
+    val kotlinAvan = ConteudoEducacional(nome = "Kotlin Avançado", duracao = 10,)
 
-    println("Digite seu nome")
-    val nome: String = scan.nextLine()
+    val listaConteudoIntro: List<ConteudoEducacional> = listOf(javaIntro, kotlinIntro)
+    val listaConteudoInter: List<ConteudoEducacional> = listOf(javaInter, kotlinInter)
+    val listaConteudoAvan: List<ConteudoEducacional> = listOf(javaAvan, kotlinAvan)
+
+    val introdutorio = Formacao("Turma Introdutória",nivel = Nivel.BASICO, listaConteudoIntro)
+    val intermediario = Formacao("Turma Intermediária", Nivel.INTERMEDIARIO, listaConteudoInter)
+    val avancado = Formacao("Turma Avançada", Nivel.DIFICIL, listaConteudoAvan)
+
+
+
+
+
+
 
 
     var selecao: Boolean=true;
 
-    while(selecao){
-        println("Olá, $nome\nEscolha a linguagem de preferência\n1- Java\n2- Kotlin\n3- Sair")
-        val opcao: Int = scan.nextInt()
-        when(opcao){
-            1 -> {
-                println("Escolha o nível \n1- Básico\n2- Intermediário \n3- Difícil")
-                val opcaoNivel: Int = scan.nextInt()
-                if(opcaoNivel == 1){
-                    println(javaBasico.getInfo())
-                } else if(opcaoNivel == 2){
-                    println(javaInter.getInfo())
-                } else if(opcaoNivel == 3){
-                    println(javaDificil.getInfo())
-                } else {
-                    println("Opção ínvalida")
+      loopPrincipal@  while(selecao){
+            println("Digite seu nome")
+            scan.nextLine()
+            val nome: String = scan.nextLine()
+            val usuario = Usuario(nome)
+
+            println("Olá, $nome\nEscolha formação de preferência\n1- Introdutório\n2- Intermediário\n3- Avançado \n4- Sair")
+            val opcao: Int = scan.nextInt()
+            when(opcao){
+                1 -> {
+
+                    println(introdutorio.getInfo())
+                    println("Deseja se matricular? \n1- Sim \n2- Não")
+                    val matricula: Int = scan.nextInt()
+                    if(matricula == 1){
+                        println(introdutorio.matricular(usuario))
+                        println("Deseja matricular outra pessoa? \n" +
+                                "1- Sim \n" +
+                                "2- Não")
+                        val outraOpcao: Int = scan.nextInt()
+                        if(outraOpcao == 1){
+                            continue@loopPrincipal
+                        } else if (outraOpcao == 2){
+                            println("Finalizando programa...")
+                            scan.close()
+                            System.exit(0)
+                        }
+
                 }
                 
             }
             2 -> {
                 println("Escolha o nível \n1- Básico\n2- Intermediário \n3- Difícil")
-                val opcaoNivel: Int = scan.nextInt()
+
             }
-            3 -> {
+            3 ->{
+
+            }
+            4 -> {
                 println("Saindo do programa...")
                 selecao = false
+                scan.close()
             };
             else ->println("Opção ínvalida")
         }
