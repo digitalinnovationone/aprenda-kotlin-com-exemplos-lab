@@ -14,10 +14,17 @@ data class Formacao(val nome: String, var nivel: Nivel, var conteudos: List<Cont
         inscritos.add(usuario)
         println("${usuario.nome} teve sua matrícula realizada na formação ${this.nome}.")
     }
-
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    val usuario1 = Usuario("João")
+    val usuario2 = Usuario("Maria")
+
+    val conteudo1 = ConteudoEducacional("Introdução ao Kotlin", 60)
+    val conteudo2 = ConteudoEducacional("Kotlin Avançado", 120)
+
+    val formacao = Formacao("Kotlin Completo", Nivel.INTERMEDIARIO, listOf(conteudo1, conteudo2))
+
+    formacao.matricular(usuario1)
+    formacao.matricular(usuario2)
 }
