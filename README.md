@@ -8,3 +8,38 @@ Desafio de Projeto criado para avaliação do conteúdo técnico explorado no re
 ```kotlin
 TODO("Crie uma solução em Koltin abstraindo esse domínio. O arquivo [desafio.kt] te ajudará 😉")
 ```
+
+
+Mini diagrama do que realizar
+
+enum Nivel { <br>
+  BASICO <br>
+  INTERMEDIARIO <br>
+  DIFICIL <br>
+}
+
+class Usuario {
+  + nome: String
+  + email: String
+}
+
+class ConteudoEducacional {
+  - nome: String
+  - duracao: Int
+}
+
+class Formacao {
+  - nome: String
+  - nivel: Nivel
+  - conteudos: List<ConteudoEducacional>
+  - inscritos: List<Usuario>
+
+  + adicionarConteudo(conteudo: ConteudoEducacional): void
+  + removerConteudo(conteudo: ConteudoEducacional): void
+  + matricular(usuario: Usuario): void
+}
+
+Usuario --|> Formacao : <<inscrito>> <br>
+Formacao "1" *-- "*" ConteudoEducacional : <<possui>>
+
+
