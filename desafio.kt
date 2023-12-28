@@ -8,7 +8,11 @@ data class ConteudoEducacional(var nome: String, val duracao: Int = 60, val nive
 
 data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
 
-    val inscritos = mutableListOf<Usuario>()
+    private val inscritos = mutableListOf<Usuario>()
+
+    fun getUsers(): List<Usuario> {
+        return inscritos.toList()
+    }
 
     fun matricular(usuario: Usuario) {
         if(!inscritos.contains(usuario)) {
@@ -33,5 +37,5 @@ fun main() {
     formacaoAndroid.matricular(usuario1)
     formacaoAndroid.matricular(usuario2)
 
-    println("Inscritos na formação: ${formacaoAndroid.nome}: ${formacaoAndroid.inscritos.map { it.nome }}")
+    println("Inscritos na formação: ${formacaoAndroid.nome}: ${formacaoAndroid.getUsers().map { it.nome }}")
 }
