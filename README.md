@@ -42,4 +42,47 @@ class Formacao {
 Usuario --|> Formacao : <<inscrito>> <br>
 Formacao "1" *-- "*" ConteudoEducacional : <<possui>>
 
-
++----------------------------------------------+<br>
+|                    Formacao                  |<br>
++----------------------------------------------+<br>
+| - nome: String                               |<br>
+| - nivel: Nivel                               |<br>
+| - conteudos: List<ConteudoEducacional>       |<br>
+| - inscritos: List<Usuario>                   |<br>
++----------------------------------------------+<br>
+| + `getNome(): String`                        |<br>
+| + `getNivel(): Nivel`                        |<br>
+| + `getConteudos(): List<ConteudoEducacional>`|<br>
+| + `getInscritos(): List<Usuario>`            |<br>
+| + `matricular(usuario: Usuario): void`       |<br>
++----------------------------------------------+<br>
+<br>
++------------------------------------------------+<br>
+|               ConteudoEducacional              |<br>
++------------------------------------------------+<br>
+| - nome: String                                 |<br>
+| - duracao: Int                                 |<br>
++------------------------------------------------+<br>
+| + `getNome(): String`                          |<br>
+| + `getDuracao(): Int`                          |<br>
++------------------------------------------------+<br>
+<br>
++-----------------------------------+<br>
+|                 Nivel             |<br>
++-----------------------------------+<br>
+| `BASICO`                          |<br>
+| `INTERMEDIARIO`                   |<br>
+| `DIFICIL`                         |<br>
++-----------------------------------+<br>
+<br>
++----------------------------------------------+<br>
+|                    Usuario                   |<br>
++----------------------------------------------+<br>
+| - nome: String                               |<br>
+| - email: String                              |<br>
+| - // outros atributos e métodos              |<br>
++----------------------------------------------+<br>
+| + `getNome(): String`                        |<br>
+| + `getEmail(): String`                       |<br>
+| // outros métodos                            |<br>
++----------------------------------------------+<br>
