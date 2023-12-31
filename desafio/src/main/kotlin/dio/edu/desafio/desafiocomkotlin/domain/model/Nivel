@@ -1,0 +1,5 @@
+enum class Nivel(val nivel: Int) {
+    BASICO(1),
+    INTERMEDIARIO(2),
+    AVANCADO(3)
+}

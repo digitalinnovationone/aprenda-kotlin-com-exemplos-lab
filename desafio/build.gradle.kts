@@ -45,11 +45,15 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.test {
-	outputs.dir(snippetsDir)
+val snippetsDir = file("build/generated-snippets")
+
+tasks {
+	named<Test>("test") {
+		outputs.dir(snippetsDir)
+	}
 }
 
-tasks.asciidoctor {
+tasks.named("asciidoctor") {
 	inputs.dir(snippetsDir)
-	dependsOn(test)
-}
+	dependsOn("test")
+	}
