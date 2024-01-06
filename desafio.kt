@@ -1,21 +1,52 @@
 // [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
 
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
+enum class Nivel { INICIANTE, INTERMEDIARIO, AVANCADO }
 
-class Usuario
+class Usuario(val nome: String,  val idade: Int)
 
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
+data class ConteudoEducacional(val nome: String, val duracao: Int = 60)
 
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+data class Formacao(val nome: String, val conteudos: List<ConteudoEducacional>, val nivel: Nivel = Nivel.INICIANTE) {
 
     val inscritos = mutableListOf<Usuario>()
-    
-    fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+
+    fun matricular(vararg usuario: Usuario) {
+        for (user in usuario){
+                if (user in inscritos){
+                    println("Usuário: ${user.nome} já cadastrado!")
+                } else{
+                    inscritos.add(user)
+                }
+        }
     }
+
+
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+
+    val usuario = Usuario("Jose Pedro", 30)
+    val usuario2 = Usuario("Sandra", 22)
+    val usuario3 = Usuario("Eren", 19)
+    val usuario4 = Usuario("Eren", 19)
+
+    val conteudoAula = ConteudoEducacional("OO", 32)
+    val conteudoAula2 = ConteudoEducacional("Projetos e desafios", 122)
+
+    val curso1 = Formacao("Kotlin", listOf(conteudoAula), Nivel.INICIANTE)
+    val curso2 = Formacao("Kotlin com Desafios", listOf(conteudoAula, conteudoAula2), Nivel.INTERMEDIARIO)
+
+    curso1.matricular(usuario, usuario2)
+    curso2.matricular(usuario3, usuario3, usuario4)
+
+    println("\nInscritos no Curso: ${curso1.nome}")
+    for (inscrito in curso1.inscritos){
+        println("Nome: ${inscrito.nome}. Idade: ${inscrito.idade}")
+    }
+
+    println("Inscritos no Curso: ${curso2.nome}")
+    for (inscrito in curso2.inscritos){
+        println("Nome: ${inscrito.nome}. Idade: ${inscrito.idade}")
+    }
+
 }
