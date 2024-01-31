@@ -23,7 +23,7 @@ fun program(){
     )
 
     // Criando o curso.
-    var formacao = Formacao("Engenharia da Computação (Computação Aplicada)", Nivel.DIFICIL, listaDeDisciplinas)
+    val formacao = Formacao("Engenharia da Computação (Computação Aplicada)", Nivel.DIFICIL, listaDeDisciplinas)
 
     // Matriculando alguns alunos:
     formacao.matricular(Usuario("Thiago", 34))
