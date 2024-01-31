@@ -1,21 +1,43 @@
-// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
+fun main() {
+    program()
+}
 
 enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
-
-class Usuario
-
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
-
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
+class Usuario (val nome: String, val idade: Int)
+data class ConteudoEducacional(val nome: String, val creditos: Int)
+data class Formacao(val nome: String, val nivel: Nivel,  var conteudos: List<ConteudoEducacional>) {
 
     val inscritos = mutableListOf<Usuario>()
     
     fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+        inscritos.add(usuario)
     }
 }
+fun program(){
 
-fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    // Definindo quais disciplinas irão fazer parte do curso.
+    val listaDeDisciplinas = listOf(
+            ConteudoEducacional("Introdução à programação em C", 2,),
+            ConteudoEducacional("Banco de Dados I", 3),
+            ConteudoEducacional("Processos Estocáticos", 4)
+    )
+
+    // Criando o curso.
+    val formacao = Formacao("Engenharia da Computação (Computação Aplicada)", Nivel.DIFICIL, listaDeDisciplinas)
+
+    // Matriculando alguns alunos:
+    formacao.matricular(Usuario("Thiago", 34))
+    formacao.matricular(Usuario("Julia", 9))
+    formacao.matricular(Usuario("Bruce Lee", 53))
+
+    println("Nome da formação: " + formacao.nome)
+    println("Nível de dificuldade: " + formacao.nivel)
+
+    println("Disciplinas: ")
+    for (materias in 0..formacao.conteudos.size-1)
+        println(formacao.conteudos[materias].nome)
+
+    println("Alunos Matriculados: ")
+    for (alunos in 0..formacao.inscritos.size-1)
+        println(formacao.inscritos[alunos].nome + ", " + formacao.inscritos[alunos].idade + " anos.")
 }
