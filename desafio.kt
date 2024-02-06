@@ -1,5 +1,4 @@
 
-
 enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
 class Usuario(val nome: String)
@@ -31,7 +30,17 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
     }
 }
 
-
 fun main() {
+    val conteudo1 = ConteudoEducacional("Introdução ao Kotlin")
+    val conteudo2 = ConteudoEducacional("Programação Orientada a Objetos em Kotlin")
+    val formacao1 = Formacao ("Formação Kotlin", listOf(conteudo1, conteudo2), Nivel.INTERMEDIARIO)
+    val usuario1 = Usuario ("João")
+    val usuario2 = Usuario ("Maria")
 
-}
+    formacao1.matricular(usuario1)
+    formacao1.matricular(usuario1)
+    formacao1.matricular(usuario2)
+    formacao1.cancelarMatricula(usuario1)
+    println("Usuário 1 está inscrito na formação: ${formacao1.usuarioEstaInscrito(usuario1)}")
+    println("Usuário 2 está inscrito na formação: ${formacao1.usuarioEstaInscrito(usuario2)}")
+    }
