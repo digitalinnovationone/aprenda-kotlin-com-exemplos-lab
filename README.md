@@ -8,3 +8,14 @@ Desafio de Projeto criado para avaliação do conteúdo técnico explorado no re
 ```kotlin
 TODO("Crie uma solução em Koltin abstraindo esse domínio. O arquivo [desafio.kt] te ajudará 😉")
 ```
+Para evoluir as classes modeladas para este domínio de aplicação, pude adicionar funcionalidades que melhorem a gestão dos usuários matriculados e dos conteúdos educacionais. 
+#### 1. Adicionado métodos para gerenciar inscrições:
+* Adicionado métodos para inscrever e cancelar inscrições de usuários em formações
+* Verificar se um usuário já está inscrito em uma formação.
+#### Melhorado a classe "ConteudoEducacional":
+* Adicionado mais detalhes aos conteúdos educacionais, como descrição, nível de dificuldade, recursos necessários, etc.
+#### Implementado o método matricular na classe "Formacao":
+* Adicionado  a lógica para matricular um usuário na formação.
+#### Adicionado funcionalidades relacionadas ao nível de dificuldade:
+* Permitir que as formações sejam filtradas por nível de dificuldade.
+*  Permitir que os usuários vejam formações de acordo com seu nível de habilidade.
