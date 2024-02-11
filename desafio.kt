@@ -17,7 +17,7 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) 
 }
 
 fun main() {
-    // Exemplo de uso
+    // Exemplo de uso de ConteudoEducacional
     val conteudos = listOf(
         ConteudoEducacional("Introdução à Programação", 120),
         ConteudoEducacional("Estruturas de Dados", 180),
