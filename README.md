@@ -1,10 +1,22 @@
-# Aprenda Kotlin Com Exemplos: Desafio de Projeto (Lab)
+# 📚 Aprenda Kotlin com Exemplos - Lab
 
-Desafio de Projeto criado para avaliação do conteúdo técnico explorado no repositório [aprenda-kotlin-com-exemplos](https://github.com/digitalinnovationone/aprenda-kotlin-com-exemplos). **Nesse contexto, iremos abstrair o seguinte domínio de aplicação:**
+Este repositório é referente a um **desafio proposto pela Digital Innovation One (DIO)**, com o objetivo de colocar em prática conceitos essenciais de programação com **Kotlin**.
 
-**A [DIO](https://web.dio.me) possui `Formacoes` incríveis que têm como objetivo oferecer um conjunto de `ConteudosEducacionais` voltados para uma stack tecnológica específica, preparando profissionais de TI para o mercado de trabalho. `Formacoes` possuem algumas características importantes, como `nome`, `nivel` e seus respectivos `conteudosEducacionais`. Além disso, tais experiências educacionais têm um comportamento relevante ao nosso domínio, definido pela capacidade de `matricular` um ou mais `Alunos`.**
+## 🚀 Tecnologias utilizadas
+- Kotlin
 
+## 🎯 Sobre o desafio
+O desafio consistia em modelar uma solução orientada a objetos utilizando classes, funções e manipulação de listas em Kotlin.
 
-```kotlin
-TODO("Crie uma solução em Koltin abstraindo esse domínio. O arquivo [desafio.kt] te ajudará 😉")
-```
+✅ Eu **finalizei e concluí** o desafio **implementando meu próprio código Kotlin**, adaptando e expandindo a proposta inicial com soluções autorais.
+
+## 🛠️ Como executar
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/PedroThiago02/aprenda-kotlin-com-exemplos-lab.git
+   ```
+2. Abra o projeto em uma IDE compatível com Kotlin, como IntelliJ IDEA.
+3. Execute os exemplos e explore o código.
+
+---
+Fork original do [repositório da DIO](https://github.com/digitalinnovationone/aprenda-kotlin-com-exemplos-lab).
